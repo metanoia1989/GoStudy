@@ -60,12 +60,112 @@ func arr_and_slice() {
 }
 
 func map_type() {
+	fmt.Println("map 映射：")
 	// Key 类型为 string、Value 类型为 int 的 map 类型的变量
+	m := make(map[string]int)
+	m["clearity"] = 2
+	m["simplicity"] = 3
+	fmt.Println(m["simplicity"])
+	fmt.Println(m["clearity"])
+}
 
+/**
+ * 类型转换
+ */
+func type_convert() {
+	fmt.Println("类型转换：")
+	a := 1.1
+	b := int(a)
+	fmt.Println(b)
+}
+
+/**
+ * 流程控制
+ */
+func flow_control() {
+	fmt.Println("流程控制：")
+	if num := 9; num < 0 {
+		fmt.Println(num, "is negative")
+	} else if num < 10 {
+		fmt.Println(num, "has 1 digit")
+	} else {
+		fmt.Println(num, "has multiple digits")
+	}
+
+	i := 2
+	switch i {
+	case 1:
+		fmt.Println("one")
+	case 2:
+		fmt.Println("two")
+	default:
+		fmt.Println("none")
+	}
+
+	fmt.Println("for循环：")
+	i = 0
+	sum := 0
+	for i < 10 {
+		sum += 1
+		i++
+	}
+	fmt.Println(sum)
+
+	sum = 0
+	for i = 0; i < 10; i++ {
+		sum += i
+	}
+	fmt.Println(sum)
+
+	i = 20
+	for {
+		i--
+		fmt.Print(i, ",")
+		if i == 0 {
+			break
+		}
+	}
+	fmt.Println("")
+}
+
+func increment(i *int) {
+	*i++
+}
+
+/**
+ * 指针演示
+ */
+func pointer() {
+	fmt.Println("指针演示：")
+	var ap *int
+	a := 12
+	ap = &a
+	fmt.Println(ap, *ap)
+
+	i := 10
+	increment(&i)
+	fmt.Println(i)
+}
+
+/**
+ * 多返回值
+ */
+func add(a int, b int) (int, string) {
+	c := a + b
+	return c, "successfullly added"
 }
 
 func main() {
 	var_define()
 	simple_datatype()
 	arr_and_slice()
+	map_type()
+
+	type_convert()
+	flow_control()
+	pointer()
+
+	sum, message := add(2, 1)
+	fmt.Println(message)
+	fmt.Println(sum)
 }
